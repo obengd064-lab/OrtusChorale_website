@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Staff content and membership management for Ortus Chorale Ghana.">
+    <title>Staff Admin | Ortus Chorale Ghana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <section class="login-shell" id="loginPanel">
+        <a class="login-brand" href="index.html">
+            <span class="brand-mark">CV</span>
+            <span>ORTUS CHORALE <small>STAFF PORTAL</small></span>
+        </a>
+        <div class="login-card">
+            <span class="kicker">Welcome back</span>
+            <h1>Staff sign in</h1>
+            <p>Access the choir's member records and website tools.</p>
+            <form id="loginForm">
+                <div class="field">
+                    <label for="email">Email address</label>
+                    <input id="email" name="email" type="email" autocomplete="username" required>
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" autocomplete="current-password" required>
+                </div>
+                <button class="button primary wide" type="submit">Sign in <span aria-hidden="true">→</span></button>
+                <button class="text-button" id="resetPasswordButton" type="button">Forgot password?</button>
+                <p class="form-status" id="loginStatus" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+        <a class="back-link" href="index.html">← Back to the public website</a>
+    </section>
+
+    <div class="admin-shell hidden" id="adminPanel">
+        <aside class="sidebar" id="sidebar">
+            <a class="sidebar-brand" href="index.html">
+                <span class="brand-mark">CV</span>
+                <span>ORTUS CHORALE<small>ADMIN STUDIO</small></span>
+            </a>
+            <span class="sidebar-label">WORKSPACE</span>
+            <nav class="side-nav" aria-label="Admin navigation">
+                <button class="side-link active" type="button" data-view="overview"><span>◫</span> Overview</button>
+                <button class="side-link" type="button" data-view="members"><span>♧</span> Members</button>
+                <button class="side-link" type="button" data-view="content"><span>▤</span> Website content</button>
+                <button class="side-link" type="button" data-view="content" data-scroll="storyEditor"><span>✎</span> Story page</button>
+                <button class="side-link" type="button" data-view="content" data-scroll="brandSettings"><span>✦</span> Brand &amp; statistics</button>
+                <button class="side-link" type="button" data-view="content" data-scroll="heroSlidesEditor"><span>▧</span> Hero slideshow</button>
+                <button class="side-link" type="button" data-view="content" data-scroll="musicEditor"><span>♫</span> Music</button>
+                <button class="side-link" type="button" data-view="content" data-scroll="galleryEditor"><span>▧</span> Media &amp; gallery</button>
+                <button class="side-link" type="button" data-view="content" data-scroll="leadershipEditor"><span>♙</span> Patrons &amp; executives</button>
+            </nav>
+            <div class="sidebar-bottom">
+                <span class="sidebar-label">PUBLIC SITE</span>
+                <a class="side-link" href="index.html"><span>↗</span> View website</a>
+                <div class="sidebar-user">
+                    <span class="avatar" id="userInitials">CV</span>
+                    <span><strong id="userEmail">Staff account</strong><small>Administrator</small></span>
+                </div>
+            </div>
+        </aside>
+
+        <div class="workspace">
+            <header class="topbar">
+                <button class="menu-button" id="menuButton" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+                <div class="page-heading">
+                    <span class="kicker">ORTUS CHORALE · ADMINISTRATION</span>
+                    <h1 id="pageTitle">Overview</h1>
+                </div>
+                <div class="topbar-actions">
+                    <a class="button subtle" href="index.html">View site <span aria-hidden="true">↗</span></a>
+                    <button class="button signout" id="signOutButton" type="button">Sign out</button>
+                </div>
+            </header>
+
+            <main class="view-area">
+                <section class="view-panel" id="overviewView" data-view-panel="overview">
+                    <div class="welcome-banner">
+                        <div>
+                            <span class="kicker">YOUR CHOIR, IN HARMONY</span>
+                            <h2>Welcome to your workspace.</h2>
+                            <p>Keep member records current and share the latest news with your community.</p>
+                        </div>
+                        <span class="welcome-mark" aria-hidden="true">♫</span>
+                    </div>
+                    <div class="stat-grid">
+                        <article class="stat-card">
+                            <span class="stat-icon">♧</span>
+                            <span class="stat-label">Total members</span>
+                            <strong id="totalMembers">—</strong>
+                            <small>In the organization directory</small>
+                        </article>
+                        <article class="stat-card">
+                            <span class="stat-icon">✦</span>
+                            <span class="stat-label">Active members</span>
+                            <strong id="activeMembers">—</strong>
+                            <small>Currently singing with us</small>
+                        </article>
+                        <article class="stat-card">
+                            <span class="stat-icon">♙</span>
+                            <span class="stat-label">Site administrators</span>
+                            <strong id="adminMembers">—</strong>
+                            <small>Trusted website managers</small>
+                        </article>
+                    </div>
+                    <div class="overview-grid">
+                        <section class="card">
+                            <div class="card-heading">
+                                <div><span class="kicker">DIRECTORY</span><h2>Recently added</h2></div>
+                                <button class="text-button" type="button" data-go-view="members">View all →</button>
+                            </div>
+                            <div class="recent-list" id="recentMembers">
+                                <p class="empty-state">Member records will appear here.</p>
+                            </div>
+                        </section>
+                        <section class="card security-card">
+                            <span class="kicker">ACCOUNT SECURITY</span>
+                            <h2>Update your password</h2>
+                            <p>Choose a strong password that you don't use on other sites.</p>
+                            <form id="passwordForm">
+                                <div class="field">
+                                    <label for="newPassword">New password</label>
+                                    <input id="newPassword" type="password" autocomplete="new-password" minlength="8" required>
+                                </div>
+                                <div class="field">
+                                    <label for="confirmPassword">Confirm password</label>
+                                    <input id="confirmPassword" type="password" autocomplete="new-password" minlength="8" required>
+                                </div>
+                                <button class="button primary" type="submit">Update password</button>
+                                <p class="form-status" id="passwordStatus" role="status" aria-live="polite"></p>
+                            </form>
+                        </section>
+                    </div>
+                </section>
+
+                <section class="view-panel hidden" id="membersView" data-view-panel="members">
+                    <div class="section-intro">
+                        <div>
+                            <span class="kicker">PEOPLE &amp; ROLES</span>
+                            <h2>Member directory</h2>
+                            <p>Maintain member details and manage who can administer the website.</p>
+                        </div>
+                        <button class="button primary" id="addMemberButton" type="button"><span aria-hidden="true">＋</span> Add member</button>
+                    </div>
+                    <section class="card directory-card">
+                        <div class="directory-toolbar">
+                            <div><h3>Organization members</h3><span id="memberCountLabel">Loading records…</span></div>
+                            <label class="search-field">
+                                <span aria-hidden="true">⌕</span>
+                                <input id="memberSearch" type="search" placeholder="Search members" aria-label="Search members">
+                            </label>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Member</th>
+                                        <th>Voice part</th>
+                                        <th>Status</th>
+                                        <th>Joined</th>
+                                        <th>Access</th>
+                                        <th><span class="visually-hidden">Actions</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="memberRows">
+                                    <tr><td colspan="6" class="empty-state">Loading member records…</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="form-status" id="memberStatus" role="status" aria-live="polite"></p>
+                    </section>
+                </section>
+
+                <section class="view-panel hidden" id="contentView" data-view-panel="content">
+                    <div class="section-intro">
+                        <div>
+                            <span class="kicker">PUBLISHING STUDIO</span>
+                            <h2>Website content</h2>
+                            <p>Update the story page, homepage, events, gallery, music, and leadership profiles.</p>
+                        </div>
+                    </div>
+                    <form id="contentForm">
+                        <section class="card content-card">
+                            <div class="card-heading"><div><span class="kicker">FIRST IMPRESSIONS</span><h2>Homepage welcome</h2></div></div>
+                            <div class="field">
+                                <label for="heroHeading">Main heading</label>
+                                <input id="heroHeading" name="hero_heading" maxlength="160" required>
+                            </div>
+                            <div class="field">
+                                <label for="heroIntro">Introduction</label>
+                                <textarea id="heroIntro" name="hero_intro" maxlength="1000" required></textarea>
+                            </div>
+                        </section>
+
+                        <section class="card content-card" id="storyEditor">
+                            <div class="card-heading"><div><span class="kicker">ABOUT THE CHORALE</span><h2>Our Story page</h2></div></div>
+                            <div class="field">
+                                <label for="storyPageHeadingInput">Page title</label>
+                                <input id="storyPageHeadingInput" maxlength="160" required>
+                            </div>
+                            <div class="field">
+                                <label for="storyPageIntroInput">Page introduction</label>
+                                <textarea id="storyPageIntroInput" maxlength="1000" required></textarea>
+                            </div>
+                            <div class="form-grid">
+                                <div class="field">
+                                    <label for="storyEyebrowInput">Section label</label>
+                                    <input id="storyEyebrowInput" maxlength="100" required>
+                                </div>
+                                <div class="field">
+                                    <label for="storyHeadingInput">Section heading</label>
+                                    <input id="storyHeadingInput" maxlength="160" required>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="storyParagraph1Input">Story paragraph 1</label>
+                                <textarea id="storyParagraph1Input" maxlength="1500" required></textarea>
+                            </div>
+                            <div class="field">
+                                <label for="storyParagraph2Input">Story paragraph 2</label>
+                                <textarea id="storyParagraph2Input" maxlength="1500" required></textarea>
+                            </div>
+                            <div class="field">
+                                <label for="storyParagraph3Input">Story paragraph 3</label>
+                                <textarea id="storyParagraph3Input" maxlength="1500" required></textarea>
+                            </div>
+                            <div class="field">
+                                <label for="storyImageUrlInput">Story image URL</label>
+                                <input id="storyImageUrlInput" type="url" maxlength="2000" required>
+                            </div>
+                            <div class="field">
+                                <label for="storyImageAltInput">Story image description</label>
+                                <input id="storyImageAltInput" maxlength="200" required>
+                            </div>
+                            <div id="storyImageUploadControl"></div>
+                            <div class="form-grid">
+                                <div class="field">
+                                    <label for="storyClosingHeadingInput">Closing heading</label>
+                                    <input id="storyClosingHeadingInput" maxlength="160" required>
+                                </div>
+                                <div class="field">
+                                    <label for="storyClosingCtaInput">Closing button text</label>
+                                    <input id="storyClosingCtaInput" maxlength="80" required>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="card content-card" id="brandSettings">
+                            <div class="card-heading"><div><span class="kicker">IDENTITY &amp; HIGHLIGHTS</span><h2>Logo &amp; homepage statistics</h2></div></div>
+                            <p class="section-note">The logo appears in the navigation and page preloader. Leave its URL empty to use the CV monogram.</p>
+                            <div class="field">
+                                <label for="logoUrl">Logo image URL</label>
+                                <input id="logoUrl" maxlength="2000" type="url">
+                            </div>
+                            <div class="field">
+                                <label for="logoAlt">Logo description</label>
+                                <input id="logoAlt" maxlength="200" value="Ortus Chorale Ghana logo">
+                            </div>
+                            <div id="logoUploadControl"></div>
+                            <div class="form-grid">
+                                <div class="field"><label for="voicesCount">Voices</label><input id="voicesCount" type="number" min="0" max="99999" step="1" required></div>
+                                <div class="field"><label for="yearsSinging">Years singing</label><input id="yearsSinging" type="number" min="0" max="99999" step="1" required></div>
+                                <div class="field"><label for="annualConcerts">Annual concerts</label><input id="annualConcerts" type="number" min="0" max="99999" step="1" required></div>
+                                <div class="field"><label for="choirRegion">Region</label><input id="choirRegion" maxlength="80" required></div>
+                            </div>
+                        </section>
+
+                        <section class="card content-card" id="heroSlidesEditor">
+                            <div class="card-heading">
+                                <div><span class="kicker">HOMEPAGE PHOTOGRAPHS</span><h2>Hero slideshow</h2></div>
+                                <button class="button subtle" id="addHeroSlideButton" type="button">＋ Add slide</button>
+                            </div>
+                            <p class="section-note">The homepage crossfades through these photos. Upload images and add descriptive alt text for accessibility.</p>
+                            <div id="heroSlidesItemsEditor"></div>
+                        </section>
+
+                        <section class="card content-card">
+                            <div class="card-heading">
+                                <div><span class="kicker">WHAT'S ON</span><h2>Upcoming events</h2></div>
+                                <button class="button subtle" id="addEventButton" type="button">＋ Add event</button>
+                            </div>
+                            <div id="eventsEditor"></div>
+                        </section>
+
+                        <section class="card content-card" id="musicEditor">
+                            <div class="card-heading">
+                                <div><span class="kicker">REPERTOIRE &amp; RECORDINGS</span><h2>Music page</h2></div>
+                                <button class="button subtle" id="addMusicButton" type="button">＋ Add recording</button>
+                            </div>
+                            <p class="section-note">Upload MP3, WAV, OGG, M4A, AAC, or FLAC audio files up to 20 MB.</p>
+                            <div id="musicItemsEditor"></div>
+                        </section>
+
+                        <section class="card content-card" id="galleryEditor">
+                            <div class="card-heading">
+                                <div><span class="kicker">MEMORIES IN HARMONY</span><h2>Gallery &amp; media</h2></div>
+                                <button class="button subtle" id="addGalleryButton" type="button">＋ Add photo</button>
+                            </div>
+                            <p class="section-note">Upload JPEG, PNG, WebP, or GIF images up to 20 MB.</p>
+                            <div id="galleryItemsEditor"></div>
+                        </section>
+
+                        <section class="card content-card" id="leadershipEditor">
+                            <div class="card-heading">
+                                <div><span class="kicker">PEOPLE &amp; LEADERSHIP</span><h2>Patrons &amp; executives</h2></div>
+                                <button class="button subtle" id="addLeaderButton" type="button">＋ Add person</button>
+                            </div>
+                            <p class="section-note">Add each person's name, position, group, portrait, and an accessible image description.</p>
+                            <div id="leadershipItemsEditor"></div>
+                        </section>
+                        <div class="save-bar">
+                            <p class="form-status" id="contentStatus" role="status" aria-live="polite"></p>
+                            <button class="button primary" id="saveButton" type="submit">Save and publish <span aria-hidden="true">→</span></button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <dialog class="member-dialog" id="memberDialog" aria-labelledby="memberDialogTitle">
+        <form id="memberForm">
+            <div class="dialog-heading">
+                <div><span class="kicker">ORGANIZATION DIRECTORY</span><h2 id="memberDialogTitle">Add a member</h2></div>
+                <button class="icon-button" id="closeMemberDialog" type="button" aria-label="Close dialog">×</button>
+            </div>
+            <input id="memberId" type="hidden">
+            <div class="field">
+                <label for="memberName">Full name</label>
+                <input id="memberName" name="full_name" maxlength="120" autocomplete="name" required>
+            </div>
+            <div class="field">
+                <label for="memberEmail">Email address</label>
+                <input id="memberEmail" name="email" type="email" maxlength="254" autocomplete="email" required>
+            </div>
+            <div class="form-grid">
+                <div class="field">
+                    <label for="memberVoice">Voice part</label>
+                    <select id="memberVoice" name="voice_part" required>
+                        <option>Soprano</option><option>Alto</option><option>Tenor</option><option>Bass</option><option>Not sure</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="memberStatusSelect">Membership status</label>
+                    <select id="memberStatusSelect" name="membership_status" required>
+                        <option>Active</option><option>Inactive</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label for="memberJoined">Join date</label>
+                <input id="memberJoined" name="joined_at" type="date" required>
+            </div>
+            <p class="form-status" id="memberFormStatus" role="status" aria-live="polite"></p>
+            <div class="dialog-actions">
+                <button class="button subtle" id="cancelMemberDialog" type="button">Cancel</button>
+                <button class="button primary" id="saveMemberButton" type="submit">Save member</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

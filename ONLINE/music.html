@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Ghanaian hymns, gospel, and classical works in the Ortus Chorale repertoire.">
+    <title>Music | Ortus Chorale Ghana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+</head>
+<body>
+    <div class="site-preloader" id="sitePreloader" role="status" aria-label="Loading Ortus Chorale Ghana"><span class="loader-emblem" aria-hidden="true">CV</span><span class="loader-ring" aria-hidden="true"></span></div>
+    <header id="siteHeader"></header>
+    <main>
+        <section class="page-banner">
+            <div class="page-width">
+                <div class="eyebrow">Listen to our sound</div>
+                <h1>Tradition, faith, and song.</h1>
+                <p>Our repertoire brings together Ghanaian hymns, contemporary gospel, and treasured classical works.</p>
+            </div>
+        </section>
+        <section class="section page-width">
+            <div class="section-heading reveal">
+                <div><div class="eyebrow">Selected repertoire</div><h2>Songs we share</h2><p>Audio previews will be added when recordings are available.</p></div>
+            </div>
+            <div class="music-list" id="musicList"></div>
+        </section>
+        <section class="join-band">
+            <div class="page-width join-band-inner reveal">
+                <h2>Let the music bring us together.</h2>
+                <a class="button dark" href="gallery.html">See the chorale <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+    </main>
+    <footer id="siteFooter"></footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="site.js"></script>
+</body>
+</html>

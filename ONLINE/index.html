@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ortus Chorale Ghana — a community choir sharing African choral traditions, gospel, and classical music.">
+    <title>Ortus Chorale Ghana | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
+</head>
+<body>
+    <div class="site-preloader" id="sitePreloader" role="status" aria-label="Loading Ortus Chorale Ghana">
+        <span class="loader-emblem" aria-hidden="true">CV</span>
+        <span class="loader-ring" aria-hidden="true"></span>
+    </div>
+    <header id="siteHeader"></header>
+    <main>
+        <section class="home-hero" aria-labelledby="heroHeading">
+            <div class="hero-copy">
+                <div class="eyebrow">BAWJIASE · GHANA</div>
+                <h1 id="heroHeading">Voices raised in praise.</h1>
+                <p id="heroIntro">A community of singers sharing African choral traditions, gospel, and classical music across Ghana's Central Region.</p>
+                <div class="hero-actions">
+                    <a class="button" href="events.html">Explore our events <span aria-hidden="true">→</span></a>
+                    <a class="button outline" href="about.html">Discover our story</a>
+                </div>
+            </div>
+            <div class="hero-visual" id="heroSlideshow" aria-label="Photographs of the chorale"></div>
+        </section>
+
+        <div class="ticker" aria-label="Choir highlights">
+            <div class="stat"><strong id="voicesCount" data-stat="voices" data-count="38">0</strong><span>Voices</span></div>
+            <div class="stat"><strong id="yearsSingingCount" data-stat="years_singing" data-count="12">0</strong><span>Years singing</span></div>
+            <div class="stat"><strong id="annualConcertsCount" data-stat="annual_concerts" data-count="24">0</strong><span>Annual concerts</span></div>
+            <div class="stat"><strong id="choirRegionCount" data-stat="region">Central</strong><span>Region of Ghana</span></div>
+        </div>
+
+        <section class="section page-width" aria-labelledby="discoverHeading">
+            <div class="section-heading reveal">
+                <div>
+                    <div class="eyebrow">Explore Ortus Chorale</div>
+                    <h2 id="discoverHeading">A place for every voice.</h2>
+                    <p>Find out who we are, hear what we sing, and share the moments that bring our community together.</p>
+                </div>
+            </div>
+            <div class="discover-grid">
+                <a class="discover-card reveal" href="about.html">
+                    <div><span>Our beginnings</span><h3>Our story</h3><p>Learn about the people and purpose behind the music.</p></div>
+                    <strong>Meet the chorale →</strong>
+                </a>
+                <a class="discover-card reveal" href="events.html">
+                    <div><span>Gather with us</span><h3>Events</h3><p>See what is coming up and join us for an evening of song.</p></div>
+                    <strong>See upcoming events →</strong>
+                </a>
+                <a class="discover-card reveal" href="music.html">
+                    <div><span>Listen in</span><h3>Our music</h3><p>Explore the hymns, gospel, and classical works in our repertoire.</p></div>
+                    <strong>Explore the repertoire →</strong>
+                </a>
+                <a class="discover-card reveal" href="gallery.html">
+                    <div><span>Life in harmony</span><h3>Gallery</h3><p>Look back on concerts, rehearsals, and community moments.</p></div>
+                    <strong>Browse the gallery →</strong>
+                </a>
+                <a class="discover-card reveal" href="patrons-executives.html">
+                    <div><span>Our community</span><h3>Patrons &amp; Executives</h3><p>Meet the patrons and leaders who guide and support the chorale.</p></div>
+                    <strong>Meet our people →</strong>
+                </a>
+                <a class="discover-card reveal" href="join.html">
+                    <div><span>Your voice belongs here</span><h3>Join the choir</h3><p>Take the next step toward singing and serving with us.</p></div>
+                    <strong>Find out how to join →</strong>
+                </a>
+            </div>
+        </section>
+
+        <section class="join-band">
+            <div class="page-width join-band-inner reveal">
+                <h2>Your voice belongs in the harmony.</h2>
+                <a class="button dark" href="join.html">Join the choir <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+    </main>
+    <footer id="siteFooter"></footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="site.js"></script>
+</body>
+</html>
